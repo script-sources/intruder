@@ -1,0 +1,55 @@
+{
+	"Component Typings": {
+		"prefix": "component_typings",
+		"body": [
+			"type ${1:Component} = BaseComponent<Instance> & {}"
+		],
+	},
+	"Component Variable": {
+		"prefix": "component_variable",
+		"body": [
+			"local ${1:Component}: ${1:Component}"
+		],
+	},
+	"Component Declaration": {
+		"prefix": "component_class",
+		"body": [
+			"do",
+			"\tlocal super = BaseComponent",
+			"\t${1:Component} = setmetatable({}, { __index = super })",
+			"\t${1:Component}.__index = ${1:Component}",
+			"",
+			"\tfunction ${1:Component}:__tostring()",
+			"\t\treturn \"${1:Component} - \" .. self.instance:GetFullName()",
+			"\tend",
+			"\t${1:Component}.attached = {} :: { [Instance]: ${1:Component} }",
+			"",
+			"\t-- Constructor",
+			"\tfunction ${1:Component}.new(instance, ...)",
+			"\t\tlocal self = setmetatable({}, ${1:Component})",
+			"\t\tself = self:constructor(instance, ...) or self",
+			"\t\tself:run()",
+			"\t\treturn self :: ${1:Component}",
+			"\tend",
+			"",
+			"\t-- Fields & Members",
+			"\tfunction ${1:Component}:constructor(instance)",
+			"\t\tsuper.constructor(self, instance)",
+			"\tend",
+			"",
+			"\t-- Lifecycle Events",
+			"\tfunction ${1:Component}:onStart()",
+			"\t\t${1:Component}.attached[self.instance] = self",
+			"\t\tsuper.onStart(self)",
+			"\tend",
+			"",
+			"\t-- Methods & Functions",
+			"\tfunction ${1:Component}:destroy()",
+			"\t\t${1:Component}.attached[self.instance] = nil",
+			"\t\tsuper.destroy(self)",
+			"\tend",
+			"end",
+			""
+		],
+	}
+}

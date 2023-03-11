@@ -1,0 +1,2 @@
+[tools]
+darklua = { gitlab = "seaofvoices/darklua", version = "=0.8.0" }

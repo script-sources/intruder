@@ -1,0 +1,15 @@
+{
+	"rules": [
+	  "remove_comments",
+	  "remove_spaces",
+	  "compute_expression",
+	  "remove_nil_declaration",
+	  "remove_empty_do",
+	  "remove_unused_if_branch",
+	  "remove_unused_while",
+	  "remove_method_definition",
+	  "remove_function_call_parens",
+	  "convert_local_function_to_assign",
+	  "rename_variables"
+	]
+}

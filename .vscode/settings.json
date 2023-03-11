@@ -1,0 +1,25 @@
+{
+	"editor.formatOnSave": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll": true,
+		"source.organizeImports": true
+	},
+	"robloxLsp.workspace.library": [
+		"types"
+	],
+	"emeraldwalk.runonsave": {
+		"autoClearConsole": true,
+		"commands": [
+			{
+				"cmd": "darklua process src/${fileBasename} out/processed/${fileBasename} & darklua minify out/processed/${fileBasename} out/production/${fileBasename}",
+				"match": ".*\\.lua$",
+				"isAsync": false
+			},
+			{
+				"cmd": "darklua process src out/processed & darklua minify out/processed out/production",
+				"match": ".*\\.lua$",
+				"isAsync": false
+			},
+		]
+	}
+}
